@@ -13,5 +13,8 @@ Lucki is a fun and simple web app for testing one's luck and visualizing differe
   - [ ] Track results and counts of unique and non-unique users
   - [ ] Log results from rolls
   - [ ] Show users their roll history
+  - [ ] Show users their best and worst rolls
+  - [ ] Provide users with an inventory of their rolls
+- [ ] Roll tiers and rarities to boost user retention
 - [ ] Fun animations to boost user retention and aesthetics
 - [ ] Results sharing to encourage steady user traffic
