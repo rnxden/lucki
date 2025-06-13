@@ -1,0 +1,13 @@
+root = false
+
+[*.{js,jsx,ts,tsx}]
+indent_size = 2
+indent_style = space
+
+[*.{html,css}]
+indent_size = 2
+indent_style = space
+
+[*.{json,yaml,yml}]
+indent_size = 2
+indent_style = space
