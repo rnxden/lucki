@@ -4,6 +4,13 @@
 @theme {
   --font-sans: "Ubuntu", Geneva, Verdana, sans-serif;
   --font-mono: "Ubuntu Mono", "Courier New", Courier, monospace;
+
+  --color-accent-lighter: var(--color-green-300);
+  --color-accent-light: var(--color-green-400);
+  --color-accent-dark: var(--color-green-800);
+
+  --color-fore-light: var(--color-neutral-300);
+  --color-fore-dark: var(--color-neutral-500);
 }
 
 body {

@@ -1,10 +1,10 @@
 export default function Footer() {
   return (
     <footer className="flex flex-col items-center justify-center px-4 py-2 font-mono lowercase">
-      <p className="text-lg text-neutral-500">
+      <p className="text-lg text-fore-dark">
         {"Built by "}
         <a
-          className="text-green-800 hover:text-green-300"
+          className="text-accent-dark hover:text-accent-light"
           href="https://rnx.sh"
           target="_blank"
           rel="noopener noreferrer"
@@ -14,7 +14,7 @@ export default function Footer() {
 
         {" / Source on "}
         <a
-          className="text-green-800 hover:text-green-300"
+          className="text-accent-dark hover:text-accent-light"
           href="https://github.com/rnxden/lucki"
           target="_blank"
           rel="noopener noreferrer"
@@ -23,10 +23,10 @@ export default function Footer() {
         </a>
       </p>
 
-      <p className="text-lg text-neutral-500">
+      <p className="text-lg text-fore-dark">
         {"Copyright 2025 / "}
         <a
-          className="text-green-800 hover:text-green-300"
+          className="text-accent-dark hover:text-accent-light"
           href="https://github.com/rnxden/lucki/blob/master/LICENSE"
           target="_blank"
           rel="noopener noreferrer"

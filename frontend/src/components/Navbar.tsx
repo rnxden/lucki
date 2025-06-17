@@ -11,21 +11,23 @@ export default function Navbar() {
     <header className="flex items-center justify-between p-4 font-mono lowercase">
       <div className="flex items-center gap-2">
         <a className="flex items-center gap-1" href="/">
-          <Clover className="h-6 w-6 rotate-45 fill-green-300" />
-          <h1 className="text-xl font-bold text-green-300">Lucki</h1>
+          <Clover className="h-6 w-6 rotate-45 fill-accent-lighter" />
+          <h1 className="text-xl font-bold text-accent-lighter">Lucki</h1>
         </a>
-        <p className="text-lg text-neutral-500">Simple RNG Visualizer</p>
+        <p className="text-lg text-fore-dark">Simple RNG Visualizer</p>
       </div>
 
       <div className="flex items-center gap-8">
-        <nav className="flex items-center gap-4 text-lg text-green-200">
+        <nav className="flex items-center gap-4 *:text-lg *:text-accent-dark *:hover:text-accent-light">
           <a href="#">Normal</a>
           <a href="#">Binomial</a>
           <a href="#">Exponential</a>
           <a href="#">Geometric</a>
         </nav>
 
-        <button className="flex cursor-pointer items-center text-lg text-white">user:username</button>
+        <button className="flex cursor-pointer items-center text-lg text-fore-dark hover:text-fore-light">
+          user:username
+        </button>
       </div>
     </header>
   );
