@@ -1,11 +1,10 @@
 {
-  "name": "backend",
-  "private": true,
+  "name": "@lucki/backend",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
-  "main": "src/index.ts",
   "scripts": {
-    "dev": "ts-node .",
+    "dev": "ts-node src/index.ts",
     "build": "tsc -b",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

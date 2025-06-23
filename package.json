@@ -1,0 +1,13 @@
+{
+  "name": "lucki",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "pnpm run --recursive --parallel dev",
+    "build": "pnpm run --recursive --parallel build",
+    "format": "pnpm run --recursive --parallel format",
+    "format:check": "pnpm run --recursive --parallel format:check"
+  },
+  "packageManager": "pnpm@10.12.1"
+}
