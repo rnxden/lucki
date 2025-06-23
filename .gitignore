@@ -1,6 +1,8 @@
 # Node.js
-node_modules/
-build/
+node_modules
+
+# Builds
+dist
 
 # Logs
 logs
@@ -10,3 +12,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
+# Editors
+.vscode
+.idea
+
+# Misc
+.DS_Store
