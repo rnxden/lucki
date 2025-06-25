@@ -49,6 +49,10 @@ export default class Database {
     this.createRollStmt = this.db.prepare("INSERT INTO rolls (value, timestamp, user_id) VALUES (?, ?, ?) RETURNING *");
   }
 
+  close() {
+    this.db.close();
+  }
+
   findUserByID(id: number): User | null {
     return this.findUserByIDStmt.get(id) as User | null;
   }
