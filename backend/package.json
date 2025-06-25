@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "tsx src/index.ts",
+    "dev": "tsx --watch --watch-path=src src/index.ts",
     "build": "tsc -b",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
