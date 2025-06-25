@@ -13,6 +13,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Envs
+.env
+.env.*
+
+# Databases
+*.db
+
 # Editors
 .vscode
 .idea
