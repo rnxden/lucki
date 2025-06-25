@@ -11,9 +11,18 @@
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/express": "^5.0.3",
     "@types/node": "^24.0.3",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
   }
 }
