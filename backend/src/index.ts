@@ -2,7 +2,6 @@ import "dotenv/config";
 import express from "express";
 import type { Request, Response } from "express";
 import cors from "cors";
-import cookieParser from "cookie-parser";
 import { randomUUID, hash } from "node:crypto";
 import Database from "./database.js";
 
@@ -11,10 +10,9 @@ const port = process.env.PORT ?? "3000";
 const db = new Database(process.env.DB_FILE);
 
 app.use(cors({ origin: "*" }));
-app.use(cookieParser());
 
 app.get("/api/auth", async (req: Request, res: Response) => {
-  const uuid = req.cookies.uuid;
+  const uuid = req.get("Authorization") ?? "";
   const user = db.findUserByUUID(uuid);
 
   if (!user) {
@@ -25,7 +23,7 @@ app.get("/api/auth", async (req: Request, res: Response) => {
 });
 
 app.post("/api/auth", async (req: Request, res: Response) => {
-  let uuid = req.cookies.uuid;
+  let uuid = req.get("Authorization") ?? "";
   let user = db.findUserByUUID(uuid);
   if (user) {
     res.status(200).send(user);
@@ -38,7 +36,7 @@ app.post("/api/auth", async (req: Request, res: Response) => {
 });
 
 app.get("/api/roll", async (req: Request, res: Response) => {
-  const uuid = req.cookies.uuid;
+  const uuid = req.get("Authorization") ?? "";
   const user = db.findUserByUUID(uuid);
   if (!user) {
     res.sendStatus(401);
@@ -50,7 +48,7 @@ app.get("/api/roll", async (req: Request, res: Response) => {
 });
 
 app.post("/api/roll", async (req: Request, res: Response) => {
-  const uuid = req.cookies.uuid;
+  const uuid = req.get("Authorization") ?? "";
   const user = db.findUserByUUID(uuid);
   if (!user) {
     res.sendStatus(401);
