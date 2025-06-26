@@ -14,8 +14,8 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-export function useAuth(): AuthContextType | null {
-  return useContext(AuthContext);
+export function useAuth(): AuthContextType {
+  return useContext(AuthContext)!;
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {

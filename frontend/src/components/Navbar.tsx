@@ -10,7 +10,7 @@ function Clover(props: SVGProps<SVGSVGElement>) {
 }
 
 export default function Navbar() {
-  const { user } = useAuth()!;
+  const { user } = useAuth();
 
   return (
     <header className="flex items-center justify-between p-4 font-mono lowercase">
