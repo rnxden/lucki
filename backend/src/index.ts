@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import type { Request, Response } from "express";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import { randomUUID, hash } from "node:crypto";
 import Database from "./database.js";
@@ -9,6 +10,7 @@ const app = express();
 const port = process.env.PORT ?? "3000";
 const db = new Database(process.env.DB_FILE);
 
+app.use(cors({ origin: "*" }));
 app.use(cookieParser());
 
 app.get("/api/auth", async (req: Request, res: Response) => {
