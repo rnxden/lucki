@@ -22,45 +22,57 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const login = async () => {
+  const getCredentials = () => localStorage.getItem("uuid");
+  const setCredentials = (creds: string) => localStorage.setItem("uuid", creds);
+  const resetCredentials = () => localStorage.removeItem("uuid");
+
+  const fetchWithCredentials = (input: RequestInfo | URL, init?: RequestInit) => {
+    const credentials = getCredentials();
+    return fetch(input, {
+      ...init,
+      headers: {
+        ...(init?.headers ?? {}),
+        ...(credentials ? { Authorization: credentials } : {}),
+      },
+    });
+  };
+
+  const authenticate = async () => {
     setLoading(true);
 
-    const uuid = localStorage.getItem("uuid") ?? "";
-    const headers = { Authorization: uuid };
+    // Try authentication
+    try {
+      const res = await fetchWithCredentials("http://localhost:3000/api/auth", { method: "GET" });
+      if (res.ok) {
+        const data: User = await res.json();
+        setUser(data);
+        setCredentials(data.uuid);
+        setLoading(false);
+        return;
+      }
+    } catch {}
 
-    // Try login
-    const loginRes = await fetch("http://localhost:3000/api/auth", { method: "GET", headers });
-    if (loginRes.ok) {
-      const data: User = await loginRes.json();
-      setUser(data);
-      setLoading(false);
-      return;
-    }
-
-    // If login failed, register for a new user
-    const registerRes = await fetch("http://localhost:3000/api/auth", { method: "POST", headers });
-    if (registerRes.ok) {
-      const data: User = await registerRes.json();
-      setUser(data);
-      setLoading(false);
-      return;
-    }
+    // If authentication failed, create a new user
+    try {
+      const res = await fetchWithCredentials("http://localhost:3000/api/auth", { method: "POST" });
+      if (res.ok) {
+        const data: User = await res.json();
+        setUser(data);
+        setCredentials(data.uuid);
+        setLoading(false);
+        return;
+      }
+    } catch {}
 
     setUser(null);
+    resetCredentials();
     setLoading(false);
   };
 
-  // Login on mount
+  // Authenticate on mount
   useEffect(() => {
-    login();
+    authenticate();
   }, []);
-
-  // Save credentials when user changes (login successful)
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem("uuid", user.uuid);
-    }
-  }, [user]);
 
   return <AuthContext.Provider value={{ user, loading }}>{children}</AuthContext.Provider>;
 }
