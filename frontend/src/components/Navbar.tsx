@@ -1,4 +1,5 @@
 import { type SVGProps } from "react";
+import { useAuth } from "../contexts/AuthContext.tsx";
 
 function Clover(props: SVGProps<SVGSVGElement>) {
   return (
@@ -9,6 +10,8 @@ function Clover(props: SVGProps<SVGSVGElement>) {
 }
 
 export default function Navbar() {
+  const { user } = useAuth()!;
+
   return (
     <header className="flex items-center justify-between p-4 font-mono lowercase">
       <div className="flex items-center gap-2">
@@ -28,7 +31,7 @@ export default function Navbar() {
         </nav>
 
         <button className="flex cursor-pointer items-center text-lg text-fore-dark hover:text-fore-light">
-          user:username
+          user:{user ? user.name : "null"}
         </button>
       </div>
     </header>
